@@ -192,7 +192,17 @@ document.addEventListener("DOMContentLoaded", () => {
         // Show the most recent (by created_at)
         active.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
         const ann = active[0];
-        announcementBanner.innerHTML = `📢 <strong>${ann.title}</strong>: ${ann.message}`;
+        // Safely construct the banner content to prevent XSS
+        announcementBanner.textContent = ""; // Clear previous content
+        const emojiNode = document.createTextNode("📢 ");
+        const strongNode = document.createElement("strong");
+        strongNode.textContent = ann.title;
+        const colonNode = document.createTextNode(": ");
+        const messageNode = document.createTextNode(ann.message);
+        announcementBanner.appendChild(emojiNode);
+        announcementBanner.appendChild(strongNode);
+        announcementBanner.appendChild(colonNode);
+        announcementBanner.appendChild(messageNode);
         announcementBanner.style.display = "block";
       } else {
         announcementBanner.style.display = "none";
