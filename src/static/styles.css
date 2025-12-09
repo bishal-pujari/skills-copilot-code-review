@@ -665,7 +665,6 @@ footer {
   background-color: rgba(255, 255, 255, 0.3);
 }
 
-/* TODO: Consider using var(--success) instead of hardcoded color for consistency */
 .announcement-banner {
   background-color: var(--success);
   color: white;
