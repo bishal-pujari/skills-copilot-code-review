@@ -2,7 +2,7 @@
 Authentication endpoints for the High School Management System API
 """
 
-from fastapi import APIRouter, HTTPException, Depends, Request
+from fastapi import APIRouter, HTTPException, Request
 from typing import Dict, Any
 def get_current_user(request: Request) -> Dict[str, Any]:
     """
