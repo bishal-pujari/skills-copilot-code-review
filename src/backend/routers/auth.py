@@ -2,8 +2,25 @@
 Authentication endpoints for the High School Management System API
 """
 
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, HTTPException, Request
 from typing import Dict, Any
+def get_current_user(request: Request) -> Dict[str, Any]:
+    """
+    Dependency to get the current user from the request.
+    For demo: expects 'X-Username' header or 'username' query param.
+    In production, use proper session/cookie/JWT auth.
+    """
+    username = request.headers.get("X-Username") or request.query_params.get("username")
+    if not username:
+        raise HTTPException(status_code=401, detail="Not authenticated")
+    teacher = teachers_collection.find_one({"_id": username})
+    if not teacher:
+        raise HTTPException(status_code=401, detail="Invalid user")
+    return {
+        "username": teacher["username"],
+        "display_name": teacher["display_name"],
+        "role": teacher["role"]
+    }
 
 from ..database import teachers_collection, verify_password
 

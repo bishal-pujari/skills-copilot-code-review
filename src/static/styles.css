@@ -1,3 +1,173 @@
+/* Announcement Banner */
+.announcement-banner {
+  background: linear-gradient(90deg, #fffde7 0%, #ffe082 100%);
+  color: #222;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: 7px;
+  margin: 16px auto 22px auto;
+  text-align: center;
+  font-size: 1.13rem;
+  box-shadow: 0 2px 12px rgba(180, 140, 0, 0.10);
+  display: block;
+  max-width: 700px;
+  letter-spacing: 0.01em;
+  border: 1.5px solid #ffe082;
+}
+
+/* Announcements Modal */
+#announcements-modal.modal {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1002;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.25);
+  transition: opacity 0.3s;
+}
+#announcements-modal .modal-content.announcements-modal-content {
+  background: var(--surface);
+  border-radius: 10px;
+  padding: 28px 32px 24px 32px;
+  min-width: 350px;
+  max-width: 480px;
+  width: 100%;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.18);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+.close-announcements-modal {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  font-size: 1.5rem;
+  color: #888;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+#announcements-list-container {
+  max-height: 180px;
+  overflow-y: auto;
+  margin-bottom: 10px;
+}
+#announcements-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+#announcements-list li {
+  background: #f9fbe7;
+  border: 1px solid #e6ee9c;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  padding: 10px 12px 8px 12px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.announcement-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 4px;
+}
+.announcement-actions button {
+  background: var(--primary-light);
+  color: var(--primary-text);
+  border: none;
+  border-radius: 4px;
+  padding: 2px 10px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.announcement-actions button.delete {
+  background: var(--error);
+  color: #fff;
+}
+.announcement-actions button:hover {
+  background: var(--primary-dark);
+}
+.announcement-actions button.delete:hover {
+  background: #b71c1c;
+}
+#announcement-form-container {
+  margin-top: 10px;
+  background: #f5f5f5;
+  border-radius: 6px;
+  padding: 12px 10px 8px 10px;
+}
+#announcement-form-title {
+  margin-bottom: 8px;
+  color: var(--primary);
+  font-size: 1.05rem;
+}
+#announcement-form .form-group {
+  margin-bottom: 10px;
+}
+#announcement-form label {
+  display: block;
+  margin-bottom: 2px;
+  font-weight: 500;
+}
+#announcement-form input[type="text"],
+#announcement-form input[type="date"],
+#announcement-form textarea {
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  font-size: 1rem;
+  margin-bottom: 2px;
+}
+#announcement-form textarea {
+  min-height: 48px;
+  resize: vertical;
+}
+#announcement-form button {
+  background: var(--secondary);
+  color: var(--secondary-text);
+  border: none;
+  border-radius: 4px;
+  padding: 6px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-top: 4px;
+  transition: background 0.2s;
+}
+#announcement-form button:hover {
+  background: var(--secondary-dark);
+}
+#announcement-form button.hidden {
+  display: none;
+}
+.icon-button {
+  background: none;
+  border: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+.icon-button:hover {
+  background: #f0f0f0;
+}
+.announcement-icon {
+  font-size: 1.2em;
+}
 /* Color palette */
 :root {
   /* Primary colors */
