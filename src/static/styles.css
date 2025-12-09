@@ -671,6 +671,7 @@ footer {
   text-align: center;
   padding: 15px;
   font-weight: bold;
+  border-radius: 5px;
 }
 
 @media (max-width: 767px) {
