@@ -247,15 +247,39 @@ document.addEventListener("DOMContentLoaded", () => {
       announcements.sort((a, b) => new Date(b.created_at) - new Date(a.created_at));
       for (const ann of announcements) {
         const li = document.createElement("li");
-        li.innerHTML = `
-          <strong>${ann.title}</strong>
-          <div style="font-size:0.97em; color:#555; margin-bottom:2px;">${ann.message}</div>
-          <div style="font-size:0.85em; color:#888;">Start: ${ann.start_date ? ann.start_date.slice(0,10) : '—'} | Expires: ${ann.expiration_date ? ann.expiration_date.slice(0,10) : '—'}</div>
-          <div class="announcement-actions">
-            <button class="edit" data-id="${ann.id || ann._id}">Edit</button>
-            <button class="delete" data-id="${ann.id || ann._id}">Delete</button>
-          </div>
-        `;
+        // Title
+        const titleElem = document.createElement("strong");
+        titleElem.textContent = ann.title;
+        li.appendChild(titleElem);
+        // Message
+        const messageElem = document.createElement("div");
+        messageElem.style.fontSize = "0.97em";
+        messageElem.style.color = "#555";
+        messageElem.style.marginBottom = "2px";
+        messageElem.textContent = ann.message;
+        li.appendChild(messageElem);
+        // Dates
+        const datesElem = document.createElement("div");
+        datesElem.style.fontSize = "0.85em";
+        datesElem.style.color = "#888";
+        const startDate = ann.start_date ? ann.start_date.slice(0,10) : '—';
+        const expirationDate = ann.expiration_date ? ann.expiration_date.slice(0,10) : '—';
+        datesElem.textContent = `Start: ${startDate} | Expires: ${expirationDate}`;
+        li.appendChild(datesElem);
+        // Actions
+        const actionsElem = document.createElement("div");
+        actionsElem.className = "announcement-actions";
+        const editBtn = document.createElement("button");
+        editBtn.className = "edit";
+        editBtn.dataset.id = ann.id || ann._id;
+        editBtn.textContent = "Edit";
+        actionsElem.appendChild(editBtn);
+        const deleteBtn = document.createElement("button");
+        deleteBtn.className = "delete";
+        deleteBtn.dataset.id = ann.id || ann._id;
+        deleteBtn.textContent = "Delete";
+        actionsElem.appendChild(deleteBtn);
+        li.appendChild(actionsElem);
         announcementsList.appendChild(li);
       }
       // Add event listeners for edit/delete
