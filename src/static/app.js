@@ -326,8 +326,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const id = announcementIdInput.value;
     const title = announcementTitleInput.value.trim();
     const message = announcementMessageInput.value.trim();
-    const start_date = announcementStartDateInput.value ? new Date(announcementStartDateInput.value) : null;
-    const expiration_date = announcementExpirationDateInput.value ? new Date(announcementExpirationDateInput.value) : null;
+    const start_date = announcementStartDateInput.value ? new Date(announcementStartDateInput.value + "T00:00:00.000Z") : null;
+    const expiration_date = announcementExpirationDateInput.value ? new Date(announcementExpirationDateInput.value + "T00:00:00.000Z") : null;
     if (!title || !message || !expiration_date) {
       showMessage("Title, message, and expiration date are required.", "error");
       return;
