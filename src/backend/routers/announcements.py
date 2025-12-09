@@ -23,8 +23,8 @@ class Announcement(BaseModel):
     author: str
 
 class AnnouncementCreate(BaseModel):
-    title: str
-    message: str
+    title: str = Field(..., min_length=1)
+    message: str = Field(..., min_length=1)
     start_date: Optional[datetime] = None
     expiration_date: datetime
 
