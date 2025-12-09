@@ -3,7 +3,6 @@ Announcement management endpoints for Mergington High School API
 """
 
 from fastapi import APIRouter, Depends, HTTPException
-from pymongo.collection import Collection
 from src.backend.database import announcements_collection
 from datetime import datetime
 from typing import List, Optional
